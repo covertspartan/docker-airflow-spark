@@ -31,7 +31,7 @@ USER airflow
 WORKDIR ${AIRFLOW_HOME}
 
 #install airflow and expose needed ports
-RUN pip install apache-airflow[hdfs]==1.8.1
+RUN pip install apache-airflow[hdfs]==1.9.0
 EXPOSE 8080 5555 8793
 
 # Configure the entry point
