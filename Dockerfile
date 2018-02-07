@@ -26,17 +26,17 @@ ENV AIRFLOW_HOME=/usr/local/airflow
 RUN useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow
 RUN usermod -a -G spark airflow
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
-RUN chown -R airflow: ${AIRFLOW_HOME}
-USER airflow
-WORKDIR ${AIRFLOW_HOME}
+
 
 #install airflow and expose needed ports
 RUN pip install apache-airflow[hdfs]==1.8.1
 EXPOSE 8080 5555 8793
 
-# Configure the entry point
+# Configure the entry point and set the default user to be `airflow`
+RUN chown -R airflow: ${AIRFLOW_HOME}
+USER airflow
+WORKDIR ${AIRFLOW_HOME}
+
 COPY ./entrypoint.sh /
-
 ENTRYPOINT ["/entrypoint.sh"]
-
 CMD ["sh"]
