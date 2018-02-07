@@ -1,4 +1,4 @@
-FROM cjoensy/docker-spark:latest
+FROM cjonesy/docker-spark:latest
 MAINTAINER covertspartan
 
 # Install dependencies
