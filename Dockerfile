@@ -40,3 +40,4 @@ WORKDIR ${AIRFLOW_HOME}
 COPY ./entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["sh"]
+
